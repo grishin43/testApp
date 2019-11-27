@@ -1,0 +1,35 @@
+<div class="container min-vh-100">
+  <div class="row min-vh-100 align-items-center">
+    <div class="col-12">
+      <div class="max-width_md vertical_padding_md">
+        <h1>Sign in</h1>
+        <form [formGroup]="loginForm">
+          <div class="form-group">
+            <label for="user_login" class="form-label">Login</label>
+            <input type="email" class="form-control" name="user_login" id="user_login" placeholder="Enter your email"
+                   formControlName="login" required>
+            <div class="form-error"
+                 *ngIf="userLogin.invalid && (userLogin.dirty || userLogin.touched)">
+              <span *ngIf="userLogin.errors.required">Email cannot be empty!</span>
+              <span *ngIf="userLogin.errors.email">Invalid email</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="user_pass" class="form-label">Password</label>
+            <input type="text" class="form-control" name="user_pass" id="user_pass" placeholder="Enter your password"
+                   formControlName="password" required>
+            <div class="form-error"
+                 *ngIf="userPassword.invalid && (userPassword.dirty || userPassword.touched)">
+              Password cannot be empty!
+            </div>
+          </div>
+          <div class="text-right">
+            <button type="submit" class="button-default blue" [disabled]="loginForm.invalid">Sign in</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+

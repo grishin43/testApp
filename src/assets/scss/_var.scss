@@ -1,0 +1,14 @@
+$color-white: #ffffff;
+$color-black: #232323;
+$color-gray: #efefef;
+$color-blue: #0e3ac5;
+$color-blue_dark: #04299c;
+$color-red: #ff0000;
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
