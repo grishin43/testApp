@@ -1,8 +1,10 @@
 $color-white: #ffffff;
 $color-black: #232323;
 $color-gray: #efefef;
-$color-blue: #0e3ac5;
-$color-blue_dark: #04299c;
+$color-gray_light: #f3f3f3;
+$color-gray_dark: #828282;
+$color-blue: #007BFF;
+$color-blue_dark: #0061ca;
 $color-red: #ff0000;
 
 @mixin transition($args...) {

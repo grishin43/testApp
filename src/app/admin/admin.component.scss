@@ -1,0 +1,155 @@
+@import "../../assets/scss/_var";
+
+$navbar-height: 70px;
+$sidebar-width: 300px;
+$sidebar-offset: 225px;
+
+.dashboard-header {
+  background: $color-white;
+  height: $navbar-height;
+  padding: 0;
+
+  h3 {
+    margin: 0;
+  }
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.dashboard-content {
+  background: $color-gray;
+  min-height: calc(100vh - #{$navbar-height});
+  padding: 20px 0;
+}
+
+.white-box {
+  background: $color-white;
+  padding: 20px 30px;
+}
+
+.actions-navbar {
+  margin: 0;
+  font-size: 15px;
+
+  span {
+    color: $color-gray_dark;
+  }
+
+  li:not(:last-child) {
+    margin-right: 20px;
+  }
+
+  .button-default {
+    padding: 4px 8px;
+    border-radius: 2px;
+    font-size: 14px;
+
+    & + .button-default {
+      margin-left: 5px;
+    }
+  }
+}
+
+.button-default {
+  font-size: 15px;
+  padding: 9px 25px;
+  border-radius: 4px;
+  border: 1px solid;
+
+  @include transition(all .15s ease-in-out);
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &.blue {
+    background: $color-blue;
+    border-color: $color-blue;
+    color: #ffffff;
+
+    &:hover:not(:disabled) {
+      background: $color-blue_dark;
+      border-color: $color-blue_dark;
+    }
+  }
+}
+
+.dashboard-sidebar {
+  background: $color-white;
+  height: 100vh;
+  width: $sidebar-width;
+  position: fixed;
+  left: -$sidebar-offset;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 -2px 10px 0 rgba(0, 0, 0, 0.1);
+  @include transition(all .2s linear);
+
+  &.sidebar-open {
+    left: 0;
+  }
+}
+
+.dashboard-main {
+  padding-left: $sidebar-width - $sidebar-offset;
+  @include transition(all .2s linear);
+
+  &.sidebar-open {
+    padding-left: $sidebar-width;
+  }
+}
+
+.dashboard-sidebar_header {
+  height: $navbar-height;
+  padding: 0 20px 0 10px;
+
+  .button-default {
+    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 2px;
+  }
+}
+
+.logo-default img {
+  max-height: 50px;
+}
+
+.dashboard-menu {
+  padding: 15px 0;
+
+  li {
+    a {
+      display: block;
+      font-size: 15px;
+      padding: 12px 40px 12px 20px;
+      color: $color-black;
+      background: $color-white;
+
+      @include transition(all .15s ease-in-out);
+
+      &:hover {
+        text-decoration: none;
+        background: $color-gray_light;
+      }
+
+      &.active {
+        background: $color-gray;
+      }
+
+      i {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  li:not(:last-child) {
+    a {
+      border-bottom: 1px solid $color-gray;
+    }
+  }
+}

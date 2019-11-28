@@ -25,6 +25,18 @@ label {
     font-size: 15px;
     font-weight: 500;
     margin-bottom: 5px;
+
+    &.custom-control-label {
+      margin-bottom: 0;
+
+      &:before {
+        top: 0.2rem;
+      }
+
+      &:after {
+        top: 0.2rem;
+      }
+    }
   }
 }
 

@@ -2,8 +2,8 @@
   <div class="row min-vh-100 align-items-center">
     <div class="col-12">
       <div class="max-width_md vertical_padding_md">
-        <h1>Sign in</h1>
-        <form [formGroup]="loginForm">
+        <h1>Sign In</h1>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label for="user_login" class="form-label">Login</label>
             <input type="email" class="form-control" name="user_login" id="user_login" placeholder="Enter your email"
@@ -23,8 +23,13 @@
               Password cannot be empty!
             </div>
           </div>
-          <div class="text-right">
-            <button type="submit" class="button-default blue" [disabled]="loginForm.invalid">Sign in</button>
+          <div class="row align-items-center justify-content-end">
+            <div class="col-auto">
+              <a routerLink="/register" class="link-default">Sign Up</a>
+            </div>
+            <div class="col-auto">
+              <button type="submit" class="button-default blue" [disabled]="loginForm.invalid">Sign in</button>
+            </div>
           </div>
         </form>
       </div>

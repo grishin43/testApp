@@ -1,0 +1,61 @@
+<div class="dashboard-sidebar" [class.sidebar-open]="sidebarOpen">
+  <div class="dashboard-sidebar_header d-flex align-items-center justify-content-between">
+    <a routerLink="/" class="logo-default">
+      <img src="../assets/images/logo.png" alt="">
+    </a>
+    <button class="button-default blue" (click)="sidebarOpen = !sidebarOpen">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="dashboard-sidebar_body">
+    <ul class="dashboard-menu list-unstyled">
+      <li *ngFor="let item of menu">
+        <a [routerLink]="item.route" [class.active]="currentRoute === item.route">
+          <i [classList]="item.icon_class" aria-hidden="true"></i>
+          {{item.title}}
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="dashboard-main" [class.sidebar-open]="sidebarOpen">
+  <div class="dashboard-header">
+    <div class="container-fluid h-100 padding-hor-20">
+      <div class="row h-100 align-items-center">
+        <div class="col-auto">
+          <h3>Dashboard</h3>
+        </div>
+        <div class="col">
+          <ul class="actions-navbar list-unstyled d-flex justify-content-end align-items-center">
+            <li>
+            <span>
+              {{user.name}}
+            </span>
+            </li>
+            <li>
+              <button class="button-default blue" title="Change Language">
+                <i class="fa fa-language" aria-hidden="true"></i>
+              </button>
+              <button class="button-default blue" title="LogOut" (click)="userService.logout()">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard-content">
+    <div class="container-fluid padding-hor-20">
+      <div class="row">
+        <div class="col-12">
+          <div class="white-box">
+            <p>Content</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
