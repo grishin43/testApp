@@ -2,16 +2,25 @@
 
 $navbar-height: 70px;
 $sidebar-width: 300px;
+$sidebar_hidden-width: 60px;
+$sidebar-width_mobile: 250px;
 $sidebar-offset: 225px;
+$sidebar-offset_mobile: 175px;
 
 :host ::ng-deep {
   .white-box {
     background: $color-white;
     padding: 30px;
+
+    @media screen and (max-width: 575px) {
+      padding: 20px;
+    }
   }
 
   .ngx-pagination {
     text-align: center;
+    padding: 0;
+    margin: 0;
 
     li {
       &.current {
@@ -30,6 +39,10 @@ $sidebar-offset: 225px;
 
   h3 {
     margin: 0;
+
+    @media screen and (max-width: 575px) {
+      font-size: 16px;
+    }
   }
 }
 
@@ -96,25 +109,30 @@ h3 {
 .dashboard-sidebar {
   background: $color-white;
   height: 100vh;
-  width: $sidebar-width;
+  width: $sidebar_hidden-width;
   position: fixed;
-  left: -$sidebar-offset;
+  left: 0;
   top: 0;
   z-index: 10;
   box-shadow: 0 -2px 10px 0 rgba(0, 0, 0, 0.1);
   @include transition(all .2s linear);
 
   &.sidebar-open {
-    left: 0;
+    width: $sidebar-width;
+    @media screen and (max-width: 575px) {
+      width: $sidebar-width_mobile;
+    }
   }
 }
 
 .dashboard-main {
-  padding-left: $sidebar-width - $sidebar-offset;
+  padding-left: $sidebar_hidden-width;
   @include transition(all .2s linear);
 
   &.sidebar-open {
-    padding-left: $sidebar-width;
+    @media screen and (min-width: 1200px) {
+      padding-left: $sidebar-width;
+    }
   }
 }
 
@@ -143,6 +161,9 @@ h3 {
       padding: 12px 40px 12px 20px;
       color: $color-black;
       background: $color-white;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
 
       @include transition(all .15s ease-in-out);
 

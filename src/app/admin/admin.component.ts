@@ -33,13 +33,18 @@ export class AdminComponent implements OnInit {
     router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
-      this.routeTitle = /[^/]*$/.exec(event.url)[0];
+      this.routeTitle = this.getRouteTitle(event.url);
     });
   }
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
-    this.sidebarOpen = true;
+    this.sidebarOpen = false;
+    this.routeTitle = this.getRouteTitle(this.router.url);
+  }
+
+  getRouteTitle(route) {
+    return /[^/]*$/.exec(route)[0];
   }
 
 }
