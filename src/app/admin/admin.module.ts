@@ -6,8 +6,8 @@ import {ProductsComponent} from './products/products.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {FormsModule} from '@angular/forms';
 import {FilterPipe} from '../_pipes/filter.pipe';
-import { DashboardComponent } from './dashboard/dashboard.component';
-
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     CommonModule,
     AdminRoutingModule,
     NgxPaginationModule,
-    FormsModule
+    FormsModule,
+    TranslateModule
   ]
 })
 export class AdminModule {
