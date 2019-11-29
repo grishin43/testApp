@@ -6,6 +6,7 @@ body {
   background: $color-white;
   font-family: 'Montserrat', sans-serif;
   color: $color-black;
+  font-size: 15px;
 }
 
 img{
@@ -18,4 +19,8 @@ img{
 .padding-hor-20 {
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.mb-30{
+  margin-bottom: 30px;
 }

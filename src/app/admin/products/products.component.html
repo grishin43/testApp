@@ -1,0 +1,54 @@
+<div class="container-fluid padding-hor-20">
+  <div class="row">
+    <div class="col-12">
+      <div class="white-box">
+        <div class="row">
+          <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+            <div class="form-group d-flex align-items-center">
+              <label for="product-publisher" class="form-label">Publisher:</label>
+              <select class="form-control" name="product-publisher" id="product-publisher"
+                      [(ngModel)]="publisherFilter">
+                <option selected value="">All</option>
+                <option *ngFor="let item of publishers" [value]="item">{{item}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+            <div class="form-group d-flex align-items-center">
+              <label for="product-publisher" class="form-label">Category:</label>
+              <select class="form-control" name="product-categories" id="product-categories"
+                      [(ngModel)]="categoryFilter">
+                <option selected value="">All</option>
+                <option *ngFor="let item of categories" [value]="item">{{item}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+            <button class="button-default blue" (click)="resetFilters()">Reset</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-product_cart mb-30"
+               *ngFor="let item of list
+               | filter:'publisher':publisherFilter
+               | filter: 'category':categoryFilter
+               | paginate: { itemsPerPage: 5, currentPage: page }">
+            <div class="product-cart">
+              <div class="product-image"
+                   [ngStyle]="{background: 'url(' + item.image + ') no-repeat center/contain'}"></div>
+              <h5>{{item.name}}</h5>
+              <p>ID: <span>{{item.id}}</span></p>
+              <p>Author: <span>{{item.author}}</span></p>
+              <p>Publisher: <span>{{item.publisher}}</span></p>
+              <p>Category: <span>{{item.category}}</span></p>
+              <p>Page Count: <span>{{item.page_count}}</span></p>
+              <p>Price: <span>{{item.price}}</span></p>
+              <p>In Stock: <span>{{item.stock ? 'Yes' : 'No'}}</span></p>
+            </div>
+          </div>
+        </div>
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>

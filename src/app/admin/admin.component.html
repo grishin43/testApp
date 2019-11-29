@@ -10,7 +10,7 @@
   <div class="dashboard-sidebar_body">
     <ul class="dashboard-menu list-unstyled">
       <li *ngFor="let item of menu">
-        <a [routerLink]="item.route" [class.active]="currentRoute === item.route">
+        <a [routerLink]="item.route" routerLinkActive="active">
           <i [classList]="item.icon_class" aria-hidden="true"></i>
           {{item.title}}
         </a>
@@ -24,7 +24,7 @@
     <div class="container-fluid h-100 padding-hor-20">
       <div class="row h-100 align-items-center">
         <div class="col-auto">
-          <h3>Dashboard</h3>
+          <h3>{{routeTitle | titlecase}}</h3>
         </div>
         <div class="col">
           <ul class="actions-navbar list-unstyled d-flex justify-content-end align-items-center">
@@ -48,14 +48,6 @@
   </div>
 
   <div class="dashboard-content">
-    <div class="container-fluid padding-hor-20">
-      <div class="row">
-        <div class="col-12">
-          <div class="white-box">
-            <p>Content</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <router-outlet></router-outlet>
   </div>
 </div>

@@ -4,6 +4,25 @@ $navbar-height: 70px;
 $sidebar-width: 300px;
 $sidebar-offset: 225px;
 
+:host ::ng-deep {
+  .white-box {
+    background: $color-white;
+    padding: 30px;
+  }
+
+  .ngx-pagination {
+    text-align: center;
+
+    li {
+      &.current {
+        background: $color-blue;
+      }
+
+      border-radius: 2px;
+    }
+  }
+}
+
 .dashboard-header {
   background: $color-white;
   height: $navbar-height;
@@ -24,11 +43,6 @@ h3 {
   background: $color-gray;
   min-height: calc(100vh - #{$navbar-height});
   padding: 20px 0;
-}
-
-.white-box {
-  background: $color-white;
-  padding: 20px 30px;
 }
 
 .actions-navbar {

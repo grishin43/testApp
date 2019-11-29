@@ -1,0 +1,32 @@
+@import "../../../assets/scss/_forms.scss";
+
+.product-image {
+  height: 200px;
+  margin-bottom: 15px;
+}
+
+.product-cart {
+
+  h5 {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 15px;
+    display: block;
+  }
+
+  p {
+    color: $color-gray_dark;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 5px;
+
+    span{
+      color: $color-black;
+      font-weight: 500;
+    }
+  }
+}
+
+.col-product_cart {
+  max-width: 225px;
+}

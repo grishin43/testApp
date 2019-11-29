@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../_services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -36,8 +37,19 @@ export class LoginComponent implements OnInit {
     this.userService.signIn(this.loginForm.value, () => {
       this.loginForm.reset();
       this.loading = false;
-    }, (error) => {
-      alert(error);
+    }, (errorText) => {
+      Swal.fire({
+        title: 'Error!',
+        text: errorText,
+        icon: 'error',
+        confirmButtonText: 'I got it',
+        customClass: {
+          confirmButton: 'button-default blue'
+        }
+      })
+        .then(() => {
+          this.loading = false;
+        });
     });
   }
 

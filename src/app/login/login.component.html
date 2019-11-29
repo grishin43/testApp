@@ -16,7 +16,7 @@
           </div>
           <div class="form-group">
             <label for="user_pass" class="form-label">Password</label>
-            <input type="text" class="form-control" name="user_pass" id="user_pass" placeholder="Enter your password"
+            <input type="password" class="form-control" name="user_pass" id="user_pass" placeholder="Enter your password"
                    formControlName="password" required>
             <div class="form-error"
                  *ngIf="userPassword.invalid && (userPassword.dirty || userPassword.touched)">
@@ -28,7 +28,7 @@
               <a routerLink="/register" class="link-default">Sign Up</a>
             </div>
             <div class="col-auto">
-              <button type="submit" class="button-default blue" [disabled]="loginForm.invalid">Sign in</button>
+              <button type="submit" class="button-default blue" [disabled]="loginForm.invalid || loading">Sign in</button>
             </div>
           </div>
         </form>

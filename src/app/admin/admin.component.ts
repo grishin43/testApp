@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../_services/user.service';
-import {Router} from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
+import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-admin',
@@ -9,26 +10,36 @@ import {Router} from '@angular/router';
 })
 export class AdminComponent implements OnInit {
 
-  currentRoute: string;
+  routeTitle: string;
   user: any;
   sidebarOpen: boolean;
   menu = [
     {
+      title: 'Dashboard',
+      route: 'dashboard',
+      icon_class: 'fa fa-tasks'
+    },
+    {
       title: 'Products',
-      route: '/admin',
+      route: 'products',
       icon_class: 'fa fa-archive'
-    }
+    },
   ];
 
   constructor(
     private userService: UserService,
-    private router: Router) {
+    private router: Router
+  ) {
+    router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      this.routeTitle = /[^/]*$/.exec(event.url)[0];
+    });
   }
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.sidebarOpen = true;
-    this.currentRoute = this.router.url;
   }
 
 }
