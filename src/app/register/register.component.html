@@ -2,49 +2,59 @@
   <div class="row min-vh-100 align-items-center">
     <div class="col-12">
       <div class="max-width_md vertical_padding_md">
-        <h1>Sign Up</h1>
+        <h1>{{ 'register.title' | translate }}</h1>
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
-            <label for="user_email" class="form-label">E-mail</label>
-            <input type="email" class="form-control" name="user_email" id="user_email" placeholder="Enter your email"
+            <label for="user_email" class="form-label">{{ 'register.fields.email.label' | translate }}</label>
+            <input type="email" class="form-control" name="user_email" id="user_email"
+                   [placeholder]="'register.fields.email.placeholder' | translate"
                    formControlName="email" required>
             <div class="form-error"
                  *ngIf="userEmail.invalid && (userEmail.dirty || userEmail.touched)">
-              <span *ngIf="userEmail.errors.required">Email cannot be empty!</span>
-              <span *ngIf="userEmail.errors.email">Invalid email</span>
+              <span
+                *ngIf="userEmail.errors.required">{{ 'register.fields.email.errors.empty_field' | translate }}</span>
+              <span *ngIf="userEmail.errors.email">{{ 'register.fields.email.errors.invalid' | translate }}</span>
             </div>
           </div>
           <div class="form-group">
-            <label for="user_name" class="form-label">Name</label>
-            <input type="text" class="form-control" name="user_name" id="user_name" placeholder="Enter your name"
+            <label for="user_name" class="form-label">{{ 'register.fields.name.label' | translate }}</label>
+            <input type="text" class="form-control" name="user_name" id="user_name"
+                   [placeholder]="'register.fields.name.placeholder' | translate"
                    formControlName="name" required>
             <div class="form-error"
                  *ngIf="userName.invalid && (userName.dirty || userName.touched)">
-              Name cannot be empty!
+              {{ 'register.fields.name.errors.empty_field' | translate }}
             </div>
           </div>
           <div class="form-group">
-            <label for="user_pass" class="form-label">Password</label>
-            <input type="text" class="form-control" name="user_pass" id="user_pass" placeholder="Enter your password"
+            <label for="user_pass" class="form-label">{{ 'register.fields.password.label' | translate }}</label>
+            <input type="text" class="form-control" name="user_pass" id="user_pass"
+                   [placeholder]="'register.fields.password.placeholder' | translate"
                    formControlName="password" required>
             <div class="form-error"
                  *ngIf="userPassword.invalid && (userPassword.dirty || userPassword.touched)">
-              Password cannot be empty!
+              {{ 'register.fields.password.errors.empty_field' | translate }}
             </div>
           </div>
           <div class="form-group">
             <div class="custom-control custom-checkbox">
               <input type="checkbox" class="custom-control-input" id="sign_in-after" name="sign_in-after"
                      (change)="signAfter = !signAfter">
-              <label class="custom-control-label form-label" for="sign_in-after">Login me immediately</label>
+              <label class="custom-control-label form-label" for="sign_in-after">
+                {{ 'register.fields.login_immediately.label' | translate }}
+              </label>
             </div>
           </div>
           <div class="row align-items-center justify-content-end">
             <div class="col-auto">
-              <a routerLink="/login" class="link-default">Sign In</a>
+              <a routerLink="/login" class="link-default">
+                {{ 'register.buttons.login' | translate }}
+              </a>
             </div>
             <div class="col-auto">
-              <button type="submit" class="button-default blue" [disabled]="registerForm.invalid || loading">Sign Up</button>
+              <button type="submit" class="button-default blue" [disabled]="registerForm.invalid || loading">
+                {{ 'register.buttons.register' | translate }}
+              </button>
             </div>
           </div>
         </form>

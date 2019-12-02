@@ -1,6 +1,15 @@
 export const products = {
-  publishers: ['Hardcover Book', 'Paperback Book', 'Awesome Book'],
-  categories: ['Horror', 'Travel', 'Science', 'Sport'],
+  publishers: {
+    0: 'Hardcover Book',
+    1: 'Paperback Book',
+    2: 'Awesome Book'
+  },
+  categories: {
+    0: 'Horror',
+    1: 'Travel',
+    2: 'Science',
+    3: 'Sport'
+  },
   list: [
     {
       id: 1,
@@ -8,7 +17,9 @@ export const products = {
       name: 'Dark Love',
       author: 'Nancy A. Collins, Martin Harry Greenberg, Edward E. Kramer',
       publisher: 'Hardcover Book',
+      publisher_id: 0,
       category: 'Horror',
+      category_id: 0,
       page_count: '352',
       price: '10.48 $',
       stock: true
@@ -19,7 +30,9 @@ export const products = {
       name: 'Poe`s Children',
       author: 'Peter Straub',
       publisher: 'Hardcover Book',
+      publisher_id: 0,
       category: 'Horror',
+      category_id: 0,
       page_count: '534',
       price: '12.98 $',
       stock: true
@@ -30,7 +43,9 @@ export const products = {
       name: 'The Book of Irish Weirdness',
       author: 'Mairtin O`Griost, Mairtin O`Griofa',
       publisher: 'Paperback Book',
+      publisher_id: 1,
       category: 'Horror',
+      category_id: 0,
       page_count: '496',
       price: '8.48 $',
       stock: true
@@ -41,7 +56,9 @@ export const products = {
       name: 'Dark Dreams',
       author: 'Brandon R. Massey',
       publisher: 'Paperback Book',
+      publisher_id: 1,
       category: 'Horror',
+      category_id: 0,
       page_count: '307',
       price: '6.98 $',
       stock: false
@@ -52,7 +69,9 @@ export const products = {
       name: 'Abraham Lincoln',
       author: 'Seth Grahame-Smith',
       publisher: 'Paperback Book',
+      publisher_id: 1,
       category: 'Horror',
+      category_id: 0,
       page_count: '352',
       price: '7.23 $',
       stock: true
@@ -63,7 +82,9 @@ export const products = {
       name: 'Lonely Planet Southern Africa',
       author: 'Lonely Planet',
       publisher: 'Paperback Book',
+      publisher_id: 1,
       category: 'Travel',
+      category_id: 1,
       page_count: '253',
       price: '14.48 $',
       stock: true
@@ -74,7 +95,9 @@ export const products = {
       name: 'Lonely Planet Tunisia',
       author: 'Donna Wheeler, Paul Clammer, Emilie Filou',
       publisher: 'Paperback Book',
+      publisher_id: 1,
       category: 'Travel',
+      category_id: 1,
       page_count: '340',
       price: '20.48 $',
       stock: true
@@ -85,7 +108,9 @@ export const products = {
       name: 'The Complete Walt Disney World 2017',
       author: 'Julie, Neal, Mike Neal',
       publisher: 'Hardcover Book',
+      publisher_id: 0,
       category: 'Travel',
+      category_id: 1,
       page_count: '158',
       price: '7.98 $',
       stock: false
@@ -96,7 +121,9 @@ export const products = {
       name: 'Lonely Planet India',
       author: 'Lonely Planet',
       publisher: 'Hardcover Book',
+      publisher_id: 0,
       category: 'Travel',
+      category_id: 1,
       page_count: '179',
       price: '13.98 $',
       stock: true
@@ -107,7 +134,9 @@ export const products = {
       name: 'Undress Me in the Temple of Heaven',
       author: 'Lonely Planet',
       publisher: 'Paperback Book',
+      publisher_id: 1,
       category: 'Travel',
+      category_id: 1,
       page_count: '307',
       price: '6.98 $',
       stock: true
@@ -118,7 +147,9 @@ export const products = {
       name: 'Site and Sound',
       author: 'Victoria Newhouse',
       publisher: 'Awesome Book',
+      publisher_id: 2,
       category: 'Science',
+      category_id: 2,
       page_count: '256',
       price: '36.98 $',
       stock: true
@@ -129,7 +160,9 @@ export const products = {
       name: 'Master Handbook of Acoustics',
       author: 'F. Alton Everest',
       publisher: 'Awesome Book',
+      publisher_id: 2,
       category: 'Science',
+      category_id: 2,
       page_count: '148',
       price: '16.48 $',
       stock: true
@@ -140,7 +173,9 @@ export const products = {
       name: 'Molecular Spectroscopy',
       author: 'Jeanne L. McHale',
       publisher: 'Awesome Book',
+      publisher_id: 2,
       category: 'Science',
+      category_id: 2,
       page_count: '463',
       price: '33.98 $',
       stock: false
@@ -151,7 +186,9 @@ export const products = {
       name: 'How in the World',
       author: 'Reader`s Digest, Brenda Jackson, Ronald L. McDonald',
       publisher: 'Hardcover Book',
+      publisher_id: 0,
       category: 'Science',
+      category_id: 2,
       page_count: '448',
       price: '16.48 $',
       stock: false
@@ -162,7 +199,9 @@ export const products = {
       name: 'Spaceman',
       author: 'Mike Massimino',
       publisher: 'Hardcover Book',
+      publisher_id: 0,
       category: 'Science',
+      category_id: 2,
       page_count: '324',
       price: '9.48 $',
       stock: true
@@ -173,7 +212,9 @@ export const products = {
       name: 'The Home Planet',
       author: 'Kevin W. Kelley, Jacques Yves Cousteau',
       publisher: 'Paperback Book',
+      publisher_id: 1,
       category: 'Science',
+      category_id: 2,
       page_count: '324',
       price: '9.48 $',
       stock: true
@@ -184,7 +225,9 @@ export const products = {
       name: 'Falling Upwards',
       author: 'Richard Holmes',
       publisher: 'Paperback Book',
+      publisher_id: 1,
       category: 'Sport',
+      category_id: 3,
       page_count: '187',
       price: '9.98 $',
       stock: true
@@ -195,7 +238,9 @@ export const products = {
       name: 'Jump!',
       author: 'Tom Buchanan',
       publisher: 'Paperback Book',
+      publisher_id: 1,
       category: 'Sport',
+      category_id: 3,
       page_count: '228',
       price: '62.98 $',
       stock: true
@@ -206,7 +251,9 @@ export const products = {
       name: 'Archery',
       author: 'Usa Archery',
       publisher: 'Paperback Book',
+      publisher_id: 1,
       category: 'Sport',
+      category_id: 3,
       page_count: '248',
       price: '11.98 $',
       stock: false
@@ -217,7 +264,9 @@ export const products = {
       name: 'I Never Had It Made',
       author: 'Jackie Robinson, Hank Aaron, Cornel West',
       publisher: 'Paperback Book',
+      publisher_id: 1,
       category: 'Sport',
+      category_id: 3,
       page_count: '304',
       price: '11.98 $',
       stock: true
@@ -228,7 +277,9 @@ export const products = {
       name: 'Rowing Faster',
       author: 'Volker Nolte',
       publisher: 'Hardcover Book',
+      publisher_id: 0,
       category: 'Sport',
+      category_id: 3,
       page_count: '321',
       price: '10.48 $',
       stock: true

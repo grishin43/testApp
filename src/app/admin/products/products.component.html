@@ -5,26 +5,30 @@
         <div class="row">
           <div class="col-lg-4 col-md-5 col-12">
             <div class="form-group d-flex align-items-center flex-md-nowrap flex-wrap mb-md-0">
-              <label for="product-publisher" class="form-label">Publisher:</label>
+              <label for="product-publisher"
+                     class="form-label">{{ 'admin.products.filters.publishers.title' | translate }}</label>
               <select class="form-control" name="product-publisher" id="product-publisher"
                       [(ngModel)]="publisherFilter">
-                <option selected value="">All</option>
-                <option *ngFor="let item of publishers" [value]="item">{{item}}</option>
+                <option selected value="">{{ 'admin.products.filters.label_all' | translate }}</option>
+                <option *ngFor="let item of publishers | keyvalue" [value]="item.key">{{item.value}}</option>
               </select>
             </div>
           </div>
           <div class="col-lg-4 col-md-5 col-12">
             <div class="form-group d-flex align-items-center flex-md-nowrap flex-wrap mb-md-0">
-              <label for="product-publisher" class="form-label">Category:</label>
+              <label for="product-publisher"
+                     class="form-label">{{ 'admin.products.filters.categories.title' | translate }}</label>
               <select class="form-control" name="product-categories" id="product-categories"
                       [(ngModel)]="categoryFilter">
-                <option selected value="">All</option>
-                <option *ngFor="let item of categories" [value]="item">{{item}}</option>
+                <option selected value="">{{ 'admin.products.filters.label_all' | translate }}</option>
+                <option *ngFor="let item of categories | keyvalue"
+                        [value]="item.key">{{item.value | translate}}</option>
               </select>
             </div>
           </div>
           <div class="col-lg-4 col-md-2 col-12">
-            <button class="button-default blue" (click)="resetFilters()">Reset</button>
+            <button class="button-default blue"
+                    (click)="resetFilters()">{{ 'admin.products.filters.buttons.reset' | translate }}</button>
           </div>
         </div>
       </div>
@@ -34,26 +38,32 @@
         <div class="row">
           <div class="col-md-6 col-12 mb-30"
                *ngFor="let item of list
-               | filter:'publisher':publisherFilter
-               | filter: 'category':categoryFilter
+               | filter:'publisher_id':publisherFilter
+               | filter: 'category_id':categoryFilter
                | paginate: { itemsPerPage: 5, currentPage: page }">
             <div class="product-cart d-flex flex-wrap">
               <div class="product-image"
                    [ngStyle]="{background: 'url(' + item.image + ') no-repeat top center/contain'}"></div>
               <div class="product-info">
-                <h5>{{item.name}}</h5>
-                <p>ID: <span>{{item.id}}</span></p>
-                <p>Author: <span>{{item.author}}</span></p>
-                <p>Publisher: <span>{{item.publisher}}</span></p>
-                <p>Category: <span>{{item.category}}</span></p>
-                <p>Page Count: <span>{{item.page_count}}</span></p>
-                <p>Price: <span>{{item.price}}</span></p>
-                <p>In Stock: <span>{{item.stock ? 'Yes' : 'No'}}</span></p>
+                <h5>{{item.name | translate}}</h5>
+                <p>{{ 'admin.products.properties.id' | translate }}: <span>{{item.id}}</span></p>
+                <p>{{ 'admin.products.properties.author' | translate }}: <span>{{item.author | translate}}</span></p>
+                <p>{{ 'admin.products.properties.publisher' | translate }}: <span>{{item.publisher}}</span></p>
+                <p>{{ 'admin.products.properties.category' | translate }}: <span>{{item.category | translate}}</span></p>
+                <p>{{ 'admin.products.properties.page_count' | translate }}: <span>{{item.page_count}}</span></p>
+                <p>{{ 'admin.products.properties.price' | translate }}: <span>{{item.price}}</span></p>
+                <p>{{ 'admin.products.properties.stock' | translate }}:
+                  <span *ngIf="item.stock">{{'admin.products.properties.stock_true' | translate}}</span>
+                  <span *ngIf="!item.stock">{{'admin.products.properties.stock_false' | translate}}</span>
+                </p>
               </div>
             </div>
           </div>
         </div>
-        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+        <pagination-controls (pageChange)="page = $event"
+                             [previousLabel]="'admin.pagination.prev_label' | translate"
+                             [nextLabel]="'admin.pagination.next_label' | translate">
+        </pagination-controls>
       </div>
     </div>
   </div>

@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {UserService} from '../_services/user.service';
 import {NavigationEnd, Router} from '@angular/router';
 import {filter} from 'rxjs/operators';
 import {TranslateService} from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-admin',
@@ -15,27 +16,22 @@ export class AdminComponent implements OnInit {
   sidebarOpen: boolean;
   menu = [
     {
-      title: 'Dashboard',
+      title: 'admin.navigation.dashboard',
       route: 'dashboard',
       icon_class: 'fa fa-tasks'
     },
     {
-      title: 'Products',
+      title: 'admin.navigation.products',
       route: 'products',
       icon_class: 'fa fa-archive'
     },
   ];
 
   constructor(
+    public translateService: TranslateService,
     private userService: UserService,
-    private router: Router,
-    public translate: TranslateService
+    private router: Router
   ) {
-    translate.addLangs(['en', 'ru']);
-    translate.setDefaultLang('en');
-    const browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/en|ru/) ? browserLang : 'en');
-
     router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
@@ -52,5 +48,4 @@ export class AdminComponent implements OnInit {
   getRouteTitle(route) {
     return /[^/]*$/.exec(route)[0];
   }
-
 }

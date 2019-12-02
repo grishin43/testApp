@@ -12,7 +12,7 @@
       <li *ngFor="let item of menu">
         <a [routerLink]="item.route" routerLinkActive="active">
           <i [classList]="item.icon_class" aria-hidden="true"></i>
-          {{item.title}}
+          {{item.title | translate}}
         </a>
       </li>
     </ul>
@@ -24,8 +24,7 @@
     <div class="container-fluid h-100 padding-hor-20">
       <div class="row h-100 align-items-center">
         <div class="col-auto">
-          <h3>{{routeTitle | titlecase}}</h3>
-          <h2>{{ 'HOME.SELECT' | translate }}</h2>
+          <h3>{{ 'admin.' + routeTitle + '.title' | translate }}</h3>
         </div>
         <div class="col">
           <ul class="actions-navbar list-unstyled d-flex flex-wrap justify-content-end align-items-center">
@@ -38,9 +37,21 @@
               <button class="button-default blue d-inline-block d-sm-none" title="Profile">
                 <i class="fa fa-user" aria-hidden="true"></i>
               </button>
-              <button class="button-default blue" title="Change Language">
-                <i class="fa fa-language" aria-hidden="true"></i>
-              </button>
+              <div class="dd-absolute_outer">
+                <button class="button-default blue" title="Change Language">
+                  <i class="fa fa-language" aria-hidden="true"></i>
+                </button>
+                <div class="dd-absolute_inner">
+                  <ul class="dd-absolute list-unstyled">
+                    <li *ngFor="let item of translateService.getLangs()">
+                      <a type="button" [class.active]="item === translateService.currentLang"
+                         (click)="translateService.use(item)">
+                        {{item | uppercase}}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
               <button class="button-default blue" title="LogOut" (click)="userService.logout()">
                 <i class="fa fa-sign-out" aria-hidden="true"></i>
               </button>
