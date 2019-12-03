@@ -376,5 +376,17 @@
       "prev_label": "Previous",
       "next_label": "Next"
     }
+  },
+  "error": {
+    "login": {
+      "title": "Error",
+      "text": "Email or password is incorrect",
+      "button": "I got it"
+    },
+    "register": {
+      "title": "Error",
+      "text": "User with the same email already exists",
+      "button": "I got it"
+    }
   }
 }

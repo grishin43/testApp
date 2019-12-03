@@ -376,5 +376,17 @@
       "prev_label": "Назад",
       "next_label": "Вперёд"
     }
+  },
+  "error": {
+    "login": {
+      "title": "Ошибка",
+      "text": "Неверный пароль или email",
+      "button": "Ок"
+    },
+    "register": {
+      "title": "Ошибка",
+      "text": "Пользователь с таким e-mail уже существует",
+      "button": "Ок"
+    }
   }
 }

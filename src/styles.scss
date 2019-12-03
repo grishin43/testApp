@@ -4,9 +4,8 @@
 body {
   overflow-x: hidden;
   background: $color-white;
-  font-family: 'Montserrat', sans-serif;
+  font: $global-font;
   color: $color-black;
-  font-size: 15px;
   @media screen and (max-width: 575px){
     font-size: 14px;
   }

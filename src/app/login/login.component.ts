@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../_services/user.service';
 import Swal from 'sweetalert2';
@@ -6,7 +6,8 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class LoginComponent implements OnInit {
 
@@ -37,12 +38,12 @@ export class LoginComponent implements OnInit {
     this.userService.signIn(this.loginForm.value, () => {
       this.loginForm.reset();
       this.loading = false;
-    }, (errorText) => {
+    }, (error) => {
       Swal.fire({
-        title: 'Error!',
-        text: errorText,
+        title: error.title,
+        text: error.text,
         icon: 'error',
-        confirmButtonText: 'I got it',
+        confirmButtonText: error.button,
         customClass: {
           confirmButton: 'button-default blue'
         }

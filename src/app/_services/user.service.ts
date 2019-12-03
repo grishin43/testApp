@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {users} from '../users';
 import {Router} from '@angular/router';
+import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +9,15 @@ import {Router} from '@angular/router';
 export class UserService {
 
   usersArr = users;
+  alert: any;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private translate: TranslateService) {
+    this.setTranslates();
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.setTranslates();
+    });
   }
 
   signUp(userData, routeTrigger, successCb, errorCb) {
@@ -25,7 +33,7 @@ export class UserService {
       }
     } else {
       if (typeof errorCb === 'function') {
-        errorCb(`User with email ${userData.email} already exist`);
+        errorCb(this.alert.register);
       }
     }
   }
@@ -40,7 +48,7 @@ export class UserService {
       }
     } else {
       if (typeof errorCb === 'function') {
-        errorCb('Email or password is incorrect');
+        errorCb(this.alert.login);
       }
     }
   }
@@ -52,6 +60,12 @@ export class UserService {
 
   findUserByEmail(email) {
     return this.usersArr.find(user => user.email === email);
+  }
+
+  setTranslates() {
+    this.translate.get('error').subscribe((res: any) => {
+      this.alert = res;
+    });
   }
 
 }

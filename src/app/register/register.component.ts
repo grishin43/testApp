@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../_services/user.service';
 import Swal from 'sweetalert2';
@@ -6,7 +6,8 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class RegisterComponent implements OnInit {
 
@@ -40,12 +41,12 @@ export class RegisterComponent implements OnInit {
     this.userService.signUp(this.registerForm.value, this.signAfter, () => {
       this.registerForm.reset();
       this.loading = false;
-    }, (errorText) => {
+    }, (error) => {
       Swal.fire({
-        title: 'Error!',
-        text: errorText,
+        title: error.title,
+        text: error.text,
         icon: 'error',
-        confirmButtonText: 'I got it',
+        confirmButtonText: error.button,
         customClass: {
           confirmButton: 'button-default blue'
         }
@@ -54,6 +55,10 @@ export class RegisterComponent implements OnInit {
           this.loading = false;
         });
     });
+  }
+
+  onChange() {
+    this.signAfter = !this.signAfter;
   }
 
   get userEmail() {

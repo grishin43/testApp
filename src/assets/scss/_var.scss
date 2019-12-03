@@ -7,6 +7,8 @@ $color-blue: #007BFF;
 $color-blue_dark: #0061ca;
 $color-red: #ff0000;
 
+$global-font: 15px 'Montserrat', sans-serif;
+
 @mixin transition($args...) {
   -webkit-transition: $args;
   -moz-transition: $args;
