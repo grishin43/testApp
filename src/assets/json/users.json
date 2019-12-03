@@ -1,0 +1,30 @@
+{
+  "list": [
+    {
+      "email": "mr.yellow@test.test",
+      "password": "123",
+      "name": "Mr. Yellow"
+    },
+    {
+      "email": "mr.white@test.test",
+      "password": "123",
+      "name": "Mr. White"
+    },
+    {
+      "email": "mr.pink@test.test",
+      "password": "123",
+      "name": "Mr. Pink"
+    },
+    {
+      "email": "mr.orange@test.test",
+      "password": "123",
+      "name": "Mr. Orange"
+    },
+    {
+      "email": "mr.blond@test.test",
+      "password": "123",
+      "name": "Mr. Blond"
+    }
+  ]
+}
+

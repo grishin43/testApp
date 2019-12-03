@@ -8,10 +8,7 @@ import {RegisterComponent} from './register/register.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateModule, TranslateLoader, TranslateService, LangChangeEvent} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-
-export function HttpLoaderFactory(httpClient: HttpClient) {
-  return new TranslateHttpLoader(httpClient, './assets/translates/', '.json');
-}
+import {HttpService} from './_services/http.service';
 
 @NgModule({
   declarations: [
@@ -25,11 +22,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ReactiveFormsModule,
     HttpClientModule,
     TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
+      loader: {provide: TranslateLoader, useClass: HttpService}
     })
   ],
   providers: [],
@@ -39,10 +32,7 @@ export class AppModule {
   constructor(public translate: TranslateService) {
     translate.addLangs(['en', 'ru']);
     translate.setDefaultLang('en');
-    let browserLang = localStorage.getItem('language');
-    if (!browserLang) {
-      browserLang = translate.getBrowserLang();
-    }
+    const browserLang = localStorage.getItem('language') || translate.getBrowserLang();
     translate.use(browserLang.match(/en|ru/) ? browserLang : 'en');
 
     translate.onLangChange.subscribe((event: LangChangeEvent) => {
