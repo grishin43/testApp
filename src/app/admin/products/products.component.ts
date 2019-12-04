@@ -1,6 +1,7 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {products} from './products';
+import {Component, OnInit} from '@angular/core';
 import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
+import {HttpService} from '../../_services/http.service';
+import {Product} from '../../_models/product';
 
 @Component({
   selector: 'app-products',
@@ -9,20 +10,22 @@ import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
 })
 export class ProductsComponent implements OnInit {
   page = 1;
-  list = products.list;
-  categories = products.categories;
-  publishers = products.publishers;
   publisherFilter = '';
   categoryFilter = '';
+  categories: any;
+  publishers: any;
+  list: Product[] = [];
 
-  constructor(private translate: TranslateService) {
-    this.setTranslates();
-    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
-      this.setTranslates();
-    });
+  constructor(
+    private translate: TranslateService,
+    private httpService: HttpService) {
   }
 
   ngOnInit() {
+    this.setData();
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.setData();
+    });
   }
 
   resetFilters() {
@@ -30,12 +33,13 @@ export class ProductsComponent implements OnInit {
     this.categoryFilter = '';
   }
 
-  setTranslates() {
-    this.translate.get('admin.products.filters.categories.list').subscribe((res: any) => {
-      this.categories = res;
+  setData() {
+    this.httpService.getProducts(this.translate.currentLang).subscribe((data) => {
+      this.list = data;
     });
-    this.translate.get('admin.products.list').subscribe((res: any) => {
-      this.list = res;
+    this.httpService.getFilters(this.translate.currentLang).subscribe((data) => {
+      this.categories = data.categories.list;
+      this.publishers = data.publishers.list;
     });
   }
 }

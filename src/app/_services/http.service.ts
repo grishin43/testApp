@@ -19,7 +19,11 @@ export class HttpService implements TranslateLoader {
   getUsers(): Observable<User[]> {
     return this.http.get('./assets/json/users.json').pipe(map((data) => {
       return data['list'].map((user: any) => {
-        return {email: user.email, name: user.name, password: user.password};
+        return {
+          email: user.email,
+          name: user.name,
+          password: user.password
+        };
       });
     }));
   }
@@ -41,6 +45,18 @@ export class HttpService implements TranslateLoader {
           stock: product.stock
         };
       });
+    }));
+  }
+
+  getFilters(lang: string): Observable<any> {
+    return this.http.get(`./assets/json/translates/${lang}.json`).pipe(map((data) => {
+      return data['admin'].products.filters;
+    }));
+  }
+
+  getAlerts(lang: string): Observable<any> {
+    return this.http.get(`./assets/json/translates/${lang}.json`).pipe(map((data) => {
+      return data['alerts'];
     }));
   }
 

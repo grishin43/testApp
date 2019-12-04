@@ -67,7 +67,12 @@
       "filters": {
         "label_all": "Все",
         "publishers": {
-          "title": "Издатели:"
+          "title": "Publishers:",
+          "list": {
+            "0": "Hardcover Book",
+            "1": "Paperback Book",
+            "2": "Awesome Book"
+          }
         },
         "categories": {
           "title": "Категории:",
@@ -387,6 +392,20 @@
       "title": "Ошибка",
       "text": "Пользователь с таким e-mail уже существует",
       "button": "Ок"
+    }
+  },
+  "alerts": {
+    "error": {
+      "login": {
+        "title": "Ошибка",
+        "text": "Неверный пароль или email",
+        "button": "Ок"
+      },
+      "register": {
+        "title": "Ошибка",
+        "text": "Пользователь с таким e-mail уже существует",
+        "button": "Ок"
+      }
     }
   }
 }

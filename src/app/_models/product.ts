@@ -7,7 +7,7 @@ export class Product {
   publisherId: number;
   category: string;
   categoryId: number;
-  pageCount: string;
+  pageCount: number;
   price: string;
   stock: boolean;
 }

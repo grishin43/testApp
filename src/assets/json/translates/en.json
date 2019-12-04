@@ -67,7 +67,12 @@
       "filters": {
         "label_all": "All",
         "publishers": {
-          "title": "Publishers:"
+          "title": "Publishers:",
+          "list": {
+            "0": "Hardcover Book",
+            "1": "Paperback Book",
+            "2": "Awesome Book"
+          }
         },
         "categories": {
           "title": "Categories:",
@@ -387,6 +392,20 @@
       "title": "Error",
       "text": "User with the same email already exists",
       "button": "I got it"
+    }
+  },
+  "alerts": {
+    "error": {
+      "login": {
+        "title": "Error",
+        "text": "Email or password is incorrect",
+        "button": "I got it"
+      },
+      "register": {
+        "title": "Error",
+        "text": "User with the same email already exists",
+        "button": "I got it"
+      }
     }
   }
 }

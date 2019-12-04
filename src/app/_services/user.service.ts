@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {users} from '../users';
 import {Router} from '@angular/router';
 import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
+import {HttpService} from './http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +14,11 @@ export class UserService {
 
   constructor(
     private router: Router,
-    private translate: TranslateService) {
-    this.setTranslates();
+    private translate: TranslateService,
+    private httpService: HttpService) {
+    this.setData();
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
-      this.setTranslates();
+      this.setData();
     });
   }
 
@@ -62,9 +64,9 @@ export class UserService {
     return this.usersArr.find(user => user.email === email);
   }
 
-  setTranslates() {
-    this.translate.get('error').subscribe((res: any) => {
-      this.alert = res;
+  setData() {
+    this.httpService.getAlerts(this.translate.currentLang).subscribe((data) => {
+      this.alert = data.error;
     });
   }
 

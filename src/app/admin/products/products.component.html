@@ -38,8 +38,8 @@
         <div class="row">
           <div class="col-md-6 col-12 mb-30"
                *ngFor="let item of list
-               | filter:'publisher_id':publisherFilter
-               | filter: 'category_id':categoryFilter
+               | filter:'publisherId':publisherFilter
+               | filter: 'categoryId':categoryFilter
                | paginate: { itemsPerPage: 5, currentPage: page }">
             <div class="product-cart d-flex flex-wrap">
               <div class="product-image"

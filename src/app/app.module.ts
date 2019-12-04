@@ -5,9 +5,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {LoginComponent} from './login/login.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RegisterComponent} from './register/register.component';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import {TranslateModule, TranslateLoader, TranslateService, LangChangeEvent} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpService} from './_services/http.service';
 
 @NgModule({
@@ -29,7 +28,8 @@ import {HttpService} from './_services/http.service';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(public translate: TranslateService) {
+  constructor(
+    public translate: TranslateService) {
     translate.addLangs(['en', 'ru']);
     translate.setDefaultLang('en');
     const browserLang = localStorage.getItem('language') || translate.getBrowserLang();
